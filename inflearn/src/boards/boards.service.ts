@@ -11,6 +11,10 @@ export class BoardsService {
     return this.boards;
   }
 
+  getBoardById(id: string): Board {
+    return this.boards.find((board) => board.id === id);
+  }
+
   createBoard(createBoardDto: CreateBoardDto): Board {
     const { title, description } = createBoardDto;
 
@@ -23,5 +27,9 @@ export class BoardsService {
 
     this.boards.push(board);
     return board;
+  }
+
+  deleteBoard(id: string): void {
+    this.boards = this.boards.filter((board) => board.id !== id);
   }
 }
